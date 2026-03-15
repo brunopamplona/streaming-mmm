@@ -1,2 +1,3 @@
 # streaming-mmm
-Media Mix Model com decomposição de contribuição por canal, curva de saturação, budget optimization. Dataset sintético de plataforma de streaming brasileira.
+Media Mix Model with channel contribution decomposition, saturation curves, and budget optimization. 
+Using synthetic dataset based on a Brazilian streaming platform.
