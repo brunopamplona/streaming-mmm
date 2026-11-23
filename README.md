@@ -13,7 +13,7 @@ Este projeto documenta um pipeline de MMM de ponta a ponta aplicado a um negóci
 O repositório cobre duas frentes que conversam entre si:
 
 1. **A planilha de modelagem** (`MMM_CLV_ROI_VIDEO_MODEL_vFinal.xlsx`), com os dados brutos, o modelo estatístico ajustado e sua validação.
-2. **A apresentação executiva** (`MMM_Video+_Achados_2024.pptx`), que traduz os resultados do modelo em leitura de negócio e recomendações.
+2. **A apresentação executiva** (`VideoPlus_MMM_CMO_Deck_EN.pdf`), que traduz os resultados do modelo em leitura de negócio e recomendações.
 
 ---
 
@@ -88,7 +88,7 @@ A planilha tem 14 abas, divididas em dois blocos:
 
 ---
 
-## Principais achados (apresentação `MMM_Video+_Achados_2024.pptx`)
+## Principais achados (apresentação `VideoPlus_MMM_CMO_Deck_EN.pdf`)
 
 A apresentação traduz o modelo em leitura executiva para o período **jan/2023–dez/2024**, com 2024 como último ano completo da base. Os achados centrais:
 
@@ -140,30 +140,38 @@ Famílias Tradicionais lidera com **ROI de 2,97x**, seguida por Fãs de Artes Ma
 ## Estrutura do projeto
 
 ```
-video-plus-mmm/
+streaming-mmm/
 │
 ├── data/
-│   ├── generate_synthetic_data.py       # Gerador da base sintética
-│   └── MMM_CLV_ROI_VIDEO_MODEL_vFinal.xlsx  # Planilha de dados e modelo
+│   ├── generate_synthetic_data.py           # Gerador da base sintética
+│   ├── MMM_CLV_ROI_VIDEO_MODEL_vFinal.xlsx  # Planilha de dados e modelo
+│   ├── MMM_Synth_Weekly_Data.csv            # Base semanal exportada
+│   ├── MMM_Transformed_Weekly_Data.csv      # Base pós-transformação (adstock + Hill)
+│   └── MMM_Holdout_Predictions.csv          # Previsões semana a semana no holdout
 │
 ├── notebooks/
-│   ├── 01_eda.ipynb                     # Análise exploratória
-│   ├── 02_adstock_saturation.ipynb      # Pipeline de transformação (adstock + Hill)
-│   ├── 03_mmm_model_hac.ipynb           # Ajuste do modelo e erro-padrão HAC
-│   └── 04_holdout_validation.ipynb      # Validação out-of-sample
+│   ├── 01_eda.ipynb                         # Análise exploratória
+│   ├── 02_adstock_saturation.ipynb          # Pipeline de transformação (adstock + Hill)
+│   ├── 03_mmm_model_hac.ipynb               # Ajuste do modelo e erro-padrão HAC
+│   └── 04_holdout_validation.ipynb          # Validação out-of-sample
 │
 ├── src/
-│   ├── transformations.py               # Funções de adstock geométrico e saturação de Hill
-│   ├── model.py                         # Wrapper de regressão MMM (OLS + HAC)
-│   └── validation.py                    # Split treino/holdout e métricas (R², MAPE, RMSE)
+│   ├── transformations.py                   # Funções de adstock geométrico e saturação de Hill
+│   ├── model.py                             # Wrapper de regressão MMM (OLS + HAC)
+│   └── validation.py                        # Split treino/holdout e métricas (R², MAPE, RMSE)
 │
 ├── presentation/
-│   └── MMM_Video+_Achados_2024.pptx     # Apresentação executiva dos achados
+│   └── VideoPlus_MMM_CMO_Deck_EN.pdf        # Apresentação executiva dos achados
 │
 ├── outputs/
-│   ├── channel_significance.png
-│   ├── cpa_implied_vs_assumed.png
-│   └── campaign_roi_by_segment.png
+│   ├── eda_subscribers_over_time.png
+│   ├── eda_spend_by_channel.png
+│   ├── eda_seasonality_trend.png
+│   ├── adstock_decay_example.png
+│   ├── hill_saturation_sensitivity.png
+│   ├── saturation_curves_by_channel.png
+│   ├── holdout_validation.png
+│   └── holdout_error_analysis.png
 │
 ├── requirements.txt
 └── README.md
@@ -187,8 +195,8 @@ video-plus-mmm/
 
 ```bash
 # 1. Clonar o repositório
-git clone https://github.com/seu-usuario/video-plus-mmm.git
-cd video-plus-mmm
+git clone https://github.com/brunopamplona/streaming-mmm.git
+cd streaming-mmm
 
 # 2. Instalar dependências
 pip install -r requirements.txt
@@ -213,7 +221,7 @@ Este projeto faz parte de um **portfólio de Marketing Science**, construído pa
 **Bruno Pamplona** — Marketing Science Lead
 Foco em Growth Analytics, Marketing Mix Modeling e inferência causal para negócios de assinatura.
 
-[LinkedIn]([https://www.linkedin.com/in/bruno-pamplona]) • [GitHub](https://github.com/brunopamplona)
+[LinkedIn](https://www.linkedin.com/in/brunopamplona) • [GitHub](https://github.com/brunopamplona)
 
 ---
 
